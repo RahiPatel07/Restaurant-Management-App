@@ -1,0 +1,113 @@
+<template>
+    <div class="slds-card">
+        <div class="slds-card__header slds-grid slds-grid_vertical-align-center slds-p-around_small">
+            <div class="slds-media__body">
+                <h2 class="slds-text-heading_medium">Admin Setup</h2>
+                <div class="slds-text-body_small slds-text-color_weak">
+                    Create Restaurants, Tables, Menu Items, and Inventory without editing page layouts.
+                </div>
+            </div>
+        </div>
+
+        <div class="slds-card__body slds-p-horizontal_small slds-p-bottom_small">
+            <lightning-tabset>
+                <lightning-tab label="Restaurant">
+                    <lightning-record-edit-form object-api-name="Restaurant__c" onsuccess={handleSuccess}>
+                        <lightning-messages></lightning-messages>
+                        <div class="slds-grid slds-gutters slds-m-top_small">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input-field field-name="Name"></lightning-input-field>
+                                <lightning-input-field field-name="Location__c"></lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input-field field-name="Is_Active__c"></lightning-input-field>
+                                <lightning-input-field field-name="Active_Chef_Count__c"></lightning-input-field>
+                            </div>
+                        </div>
+                        <div class="slds-m-top_small">
+                            <lightning-button type="submit" variant="brand" label="Create Restaurant"></lightning-button>
+                        </div>
+                    </lightning-record-edit-form>
+                </lightning-tab>
+
+                <lightning-tab label="Table">
+                    <div class="slds-m-top_small">
+                        <lightning-combobox
+                            label="Restaurant"
+                            value={selectedRestaurantId}
+                            options={restaurantOptions}
+                            placeholder="Select a restaurant"
+                            onchange={handleRestaurantChange}>
+                        </lightning-combobox>
+                    </div>
+                    <lightning-record-edit-form object-api-name="Table__c" onsuccess={handleSuccess}>
+                        <lightning-messages></lightning-messages>
+                        <lightning-input-field field-name="Restaurant__c" value={selectedRestaurantId}></lightning-input-field>
+                        <lightning-input-field field-name="Name"></lightning-input-field>
+                        <lightning-input-field field-name="Seats__c"></lightning-input-field>
+                        <lightning-input-field field-name="Status__c"></lightning-input-field>
+                        <div class="slds-m-top_small">
+                            <lightning-button type="submit" variant="brand" label="Create Table"></lightning-button>
+                        </div>
+                    </lightning-record-edit-form>
+                </lightning-tab>
+
+                <lightning-tab label="Menu Item">
+                    <div class="slds-m-top_small">
+                        <lightning-combobox
+                            label="Restaurant"
+                            value={selectedRestaurantId}
+                            options={restaurantOptions}
+                            placeholder="Select a restaurant"
+                            onchange={handleRestaurantChange}>
+                        </lightning-combobox>
+                    </div>
+                    <lightning-record-edit-form object-api-name="Menu_Item__c" onsuccess={handleSuccess}>
+                        <lightning-messages></lightning-messages>
+                        <lightning-input-field field-name="Restaurant__c" value={selectedRestaurantId}></lightning-input-field>
+                        <lightning-input-field field-name="Name"></lightning-input-field>
+                        <lightning-input-field field-name="Category__c"></lightning-input-field>
+                        <lightning-input-field field-name="Food_Type__c"></lightning-input-field>
+                        <lightning-input-field field-name="Price__c"></lightning-input-field>
+                        <lightning-input-field field-name="Is_Top_Seller__c"></lightning-input-field>
+                        <div class="slds-m-top_small">
+                            <lightning-button type="submit" variant="brand" label="Create Menu Item"></lightning-button>
+                        </div>
+                    </lightning-record-edit-form>
+                </lightning-tab>
+
+                <lightning-tab label="Inventory">
+                    <div class="slds-m-top_small">
+                        <lightning-combobox
+                            label="Restaurant"
+                            value={selectedRestaurantId}
+                            options={restaurantOptions}
+                            placeholder="Select a restaurant"
+                            onchange={handleRestaurantChange}>
+                        </lightning-combobox>
+                    </div>
+                    <lightning-record-edit-form object-api-name="Inventory_Item__c" onsuccess={handleSuccess}>
+                        <lightning-messages></lightning-messages>
+                        <lightning-input-field field-name="Restaurant__c" value={selectedRestaurantId}></lightning-input-field>
+                        <lightning-input-field field-name="Name"></lightning-input-field>
+                        <lightning-input-field field-name="Menu_Item__c"></lightning-input-field>
+                        <lightning-input-field field-name="On_Hand_Quantity__c"></lightning-input-field>
+                        <lightning-input-field field-name="Reorder_Threshold__c"></lightning-input-field>
+                        <lightning-input-field field-name="Forecast_Days_Coverage__c"></lightning-input-field>
+                        <div class="slds-m-top_small">
+                            <lightning-button type="submit" variant="brand" label="Create Inventory Item"></lightning-button>
+                        </div>
+                    </lightning-record-edit-form>
+                </lightning-tab>
+            </lightning-tabset>
+
+            <template if:true={message}>
+                <div class="slds-notify slds-notify_alert slds-theme_success slds-m-top_small" role="status">
+                    <span class="slds-assistive-text">Success</span>
+                    <h2>{message}</h2>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>
+

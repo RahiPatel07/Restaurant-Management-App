@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Menu Item</label>
+    <pluralLabel>Menu Items</pluralLabel>
+    <nameField>
+        <label>Menu Item Name</label>
+        <type>Text</type>
+    </nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Represents a food item in the restaurant menu.</description>
+    <enableActivities>false</enableActivities>
+    <sharingModel>ReadWrite</sharingModel>
+    <fields>
+        <fullName>Restaurant__c</fullName>
+        <description>The restaurant that serves this menu item.</description>
+        <externalId>false</externalId>
+        <label>Restaurant</label>
+        <referenceTo>Restaurant__c</referenceTo>
+        <relationshipLabel>Menu Items</relationshipLabel>
+        <relationshipName>Menu_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <description>High-level category of the item.</description>
+        <externalId>false</externalId>
+        <label>Category</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Appetizer</fullName>
+                    <default>true</default>
+                    <label>Appetizer</label>
+                </value>
+                <value>
+                    <fullName>Entree</fullName>
+                    <default>false</default>
+                    <label>Entrée</label>
+                </value>
+                <value>
+                    <fullName>Dessert</fullName>
+                    <default>false</default>
+                    <label>Dessert</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Food_Type__c</fullName>
+        <description>Vegetarian / Non-Vegetarian / Vegan.</description>
+        <externalId>false</externalId>
+        <label>Food Type</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Vegetarian</fullName>
+                    <default>true</default>
+                    <label>Vegetarian</label>
+                </value>
+                <value>
+                    <fullName>Non-Vegetarian</fullName>
+                    <default>false</default>
+                    <label>Non-Vegetarian</label>
+                </value>
+                <value>
+                    <fullName>Vegan</fullName>
+                    <default>false</default>
+                    <label>Vegan</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Price__c</fullName>
+        <description>Unit price of the menu item.</description>
+        <externalId>false</externalId>
+        <label>Price</label>
+        <precision>8</precision>
+        <scale>2</scale>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Is_Top_Seller__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates if this item is a top seller.</description>
+        <externalId>false</externalId>
+        <label>Top Seller</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+</CustomObject>
+

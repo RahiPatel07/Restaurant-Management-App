@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Inventory Item</label>
+    <pluralLabel>Inventory Items</pluralLabel>
+    <nameField>
+        <label>Inventory Item Name</label>
+        <type>Text</type>
+    </nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Represents an inventory item for a restaurant.</description>
+    <enableActivities>false</enableActivities>
+    <enableHistory>true</enableHistory>
+    <sharingModel>ReadWrite</sharingModel>
+    <fields>
+        <fullName>Restaurant__c</fullName>
+        <description>The restaurant this inventory item belongs to.</description>
+        <externalId>false</externalId>
+        <label>Restaurant</label>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <referenceTo>Restaurant__c</referenceTo>
+        <relationshipLabel>Inventory Items</relationshipLabel>
+        <relationshipName>Inventory_Items</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Menu_Item__c</fullName>
+        <description>Linked menu item, if applicable.</description>
+        <externalId>false</externalId>
+        <label>Menu Item</label>
+        <referenceTo>Menu_Item__c</referenceTo>
+        <relationshipLabel>Inventory Items</relationshipLabel>
+        <relationshipName>Inventory_Menu_Items</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>On_Hand_Quantity__c</fullName>
+        <description>Current stock on hand.</description>
+        <externalId>false</externalId>
+        <label>On Hand Quantity</label>
+        <precision>8</precision>
+        <scale>0</scale>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+    </fields>
+    <fields>
+        <fullName>Reorder_Threshold__c</fullName>
+        <description>Stock level at which this item should be replenished.</description>
+        <externalId>false</externalId>
+        <label>Reorder Threshold</label>
+        <precision>8</precision>
+        <scale>0</scale>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+    </fields>
+    <fields>
+        <fullName>Forecast_Days_Coverage__c</fullName>
+        <description>Forecasted days of coverage based on recent usage.</description>
+        <externalId>false</externalId>
+        <label>Forecast Days Coverage</label>
+        <precision>5</precision>
+        <scale>0</scale>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+    </fields>
+</CustomObject>
+

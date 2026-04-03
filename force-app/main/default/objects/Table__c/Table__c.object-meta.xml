@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Table</label>
+    <pluralLabel>Tables</pluralLabel>
+    <nameField>
+        <label>Table Name</label>
+        <type>Text</type>
+    </nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Represents a table in a restaurant, used for seating and orders.</description>
+    <enableActivities>false</enableActivities>
+    <enableHistory>true</enableHistory>
+    <sharingModel>ReadWrite</sharingModel>
+    <fields>
+        <fullName>Restaurant__c</fullName>
+        <description>The restaurant this table belongs to.</description>
+        <externalId>false</externalId>
+        <label>Restaurant</label>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <referenceTo>Restaurant__c</referenceTo>
+        <relationshipLabel>Tables</relationshipLabel>
+        <relationshipName>Tables</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Seats__c</fullName>
+        <description>Number of seats available at this table.</description>
+        <externalId>false</externalId>
+        <label>Seats</label>
+        <precision>3</precision>
+        <scale>0</scale>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Status of the table.</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Available</fullName>
+                    <default>true</default>
+                    <label>Available</label>
+                </value>
+                <value>
+                    <fullName>Occupied</fullName>
+                    <default>false</default>
+                    <label>Occupied</label>
+                </value>
+                <value>
+                    <fullName>Cleaning</fullName>
+                    <default>false</default>
+                    <label>Cleaning</label>
+                </value>
+                <value>
+                    <fullName>Reserved</fullName>
+                    <default>false</default>
+                    <label>Reserved</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+</CustomObject>
+

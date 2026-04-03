@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Restaurant</label>
+    <pluralLabel>Restaurants</pluralLabel>
+    <nameField>
+        <label>Restaurant Name</label>
+        <type>Text</type>
+    </nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Represents a restaurant outlet in the e-management system.</description>
+    <enableActivities>true</enableActivities>
+    <sharingModel>ReadWrite</sharingModel>
+    <fields>
+        <fullName>Location__c</fullName>
+        <description>Location / address of the restaurant.</description>
+        <externalId>false</externalId>
+        <label>Location</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Indicates whether this restaurant is active.</description>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Active_Chef_Count__c</fullName>
+        <defaultValue>1</defaultValue>
+        <description>Current number of chefs present in the kitchen.</description>
+        <externalId>false</externalId>
+        <label>Active Chef Count</label>
+        <precision>3</precision>
+        <scale>0</scale>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+    </fields>
+</CustomObject>
+

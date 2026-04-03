@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Restaurant E-Management custom app.</description>
+    <label>Restaurant Management</label>
+    <logo></logo>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <formFactors>Large</formFactors>
+    <tabs>Restaurant__c</tabs>
+    <tabs>Table__c</tabs>
+    <tabs>TestTables</tabs>
+    <tabs>Menu_Item__c</tabs>
+    <tabs>Menu</tabs>
+    <tabs>Order__c</tabs>
+    <tabs>Chef_Pending_Orders</tabs>
+    <tabs>WaiterPendingOrders</tabs>
+    <tabs>Bill</tabs>
+    <tabs>Inventory_Item__c</tabs>
+    <tabs>Feedback__c</tabs>
+    <tabs>AdminSetup</tabs>
+    <navType>Standard</navType>
+    <uiType>Lightning</uiType>
+</CustomApplication>
+

@@ -1,0 +1,158 @@
+<template>
+    <div class="slds-card">
+        <div class="slds-card__header slds-grid slds-grid_vertical-align-center slds-p-around_small">
+            <div class="slds-media__body">
+                <h2 class="slds-text-heading_medium">Bill</h2>
+                <div class="slds-text-body_small slds-text-color_weak">
+                    Review your bill, add a tip, and provide feedback.
+                </div>
+            </div>
+        </div>
+
+        <div class="slds-card__body slds-p-horizontal_small">
+            <div class="slds-grid slds-gutters slds-m-bottom_small">
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning-combobox
+                        label="Restaurant"
+                        value={selectedRestaurantId}
+                        options={restaurantOptions}
+                        placeholder="Select a restaurant"
+                        onchange={handleRestaurantChange}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning-combobox
+                        label="Table"
+                        value={selectedTableId}
+                        options={tableOptions}
+                        placeholder="Select a table"
+                        onchange={handleTableChange}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning-combobox
+                        label="Order"
+                        value={selectedOrderId}
+                        options={orderOptions}
+                        placeholder="Select an order"
+                        onchange={handleOrderChange}>
+                    </lightning-combobox>
+                </div>
+            </div>
+
+            <template if:true={bill}>
+                <div class="slds-m-bottom_small">
+                    <div class="slds-text-title_bold">
+                        Order {bill.orderNumber}
+                        <template if:true={bill.tableName}>
+                            — Table {bill.tableName}
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Items -->
+                <h3 class="slds-text-title_caps slds-m-top_small">Items</h3>
+                <template for:each={bill.items} for:item="line">
+                    <div key={line.orderItemId} class="slds-grid slds-grid_vertical-align-center slds-p-vertical_x-small">
+                        <div class="slds-col slds-size_3-of-5">
+                            <div class="slds-text-title_bold">{line.menuItemName}</div>
+                            <div class="slds-text-body_small">Status: {line.status}</div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-5 slds-text-align_right">
+                            x {line.quantity}
+                        </div>
+                        <div class="slds-col slds-size_1-of-5 slds-text-align_right">
+                            ${line.lineTotal}
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Totals -->
+                <div class="slds-m-top_medium slds-border_top slds-p-top_small">
+                    <div class="slds-grid slds-grid_align-spread">
+                        <span>Subtotal</span>
+                        <span>${bill.subtotal}</span>
+                    </div>
+                    <div class="slds-grid slds-grid_align-spread">
+                        <span>Tax</span>
+                        <span>${bill.tax}</span>
+                    </div>
+                    <div class="slds-grid slds-grid_align-spread slds-m-top_small">
+                        <span>Tip</span>
+                        <lightning-input
+                            type="number"
+                            value={tip}
+                            min="0"
+                            step="0.01"
+                            onchange={handleTipChange}>
+                        </lightning-input>
+                    </div>
+                    <div class="slds-grid slds-grid_align-spread slds-text-title_bold slds-m-top_small">
+                        <span>Total to Pay</span>
+                        <span>${calculatedTotal}</span>
+                    </div>
+                </div>
+
+                <!-- Feedback -->
+                <div class="slds-m-top_large">
+                    <h3 class="slds-text-title_caps">Feedback</h3>
+                    <div class="slds-grid slds-gutters slds-m-top_small">
+                        <div class="slds-col slds-size_1-of-3">
+                            <lightning-input
+                                type="number"
+                                label="Food Rating (1-5)"
+                                min="1"
+                                max="5"
+                                value={foodRating}
+                                onchange={handleFoodRatingChange}>
+                            </lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3">
+                            <lightning-input
+                                type="number"
+                                label="Service Rating (1-5)"
+                                min="1"
+                                max="5"
+                                value={serviceRating}
+                                onchange={handleServiceRatingChange}>
+                            </lightning-input>
+                        </div>
+                    </div>
+                    <div class="slds-m-top_small">
+                        <lightning-textarea
+                            label="Comments"
+                            value={comments}
+                            onchange={handleCommentsChange}>
+                        </lightning-textarea>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="slds-m-top_large slds-grid slds-grid_align-spread">
+                    <lightning-button
+                        label="Back to Cart"
+                        variant="neutral"
+                        onclick={handleBackToCart}>
+                    </lightning-button>
+                    <lightning-button
+                        label="Pay &amp; Done"
+                        variant="brand"
+                        onclick={handlePay}>
+                    </lightning-button>
+                </div>
+            </template>
+
+            <template if:false={bill}>
+                <div class="slds-text-color_weak">No bill to display.</div>
+            </template>
+
+            <template if:true={message}>
+                <div class="slds-notify slds-notify_alert slds-theme_info slds-m-top_small" role="status">
+                    <span class="slds-assistive-text">Info</span>
+                    <h2>{message}</h2>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>
+

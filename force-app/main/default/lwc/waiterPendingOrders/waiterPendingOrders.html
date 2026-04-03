@@ -1,0 +1,76 @@
+<template>
+    <div class="slds-card">
+        <div class="slds-card__header slds-grid slds-grid_vertical-align-center slds-p-around_small">
+            <div class="slds-media__body">
+                <h2 class="slds-text-heading_medium">Waiter Pending Orders</h2>
+                <div class="slds-text-body_small slds-text-color_weak">
+                    Items ready for pickup and delivery.
+                </div>
+            </div>
+        </div>
+
+        <div class="slds-card__body slds-p-horizontal_small">
+            <div class="slds-grid slds-gutters slds-m-bottom_small">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-combobox
+                        label="Restaurant"
+                        value={selectedRestaurantId}
+                        options={restaurantOptions}
+                        placeholder="Select a restaurant"
+                        onchange={handleRestaurantChange}>
+                    </lightning-combobox>
+                </div>
+            </div>
+
+            <template if:true={queueItems}>
+                <template for:each={queueItems} for:item="item">
+                    <article key={item.orderItemId} class="slds-card slds-m-bottom_small">
+                        <div class="slds-card__body slds-p-around_small">
+                            <div class="slds-grid slds-wrap slds-gutters">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <div class="slds-text-title_bold">{item.menuItemName}</div>
+                                    <div class="slds-text-body_small">
+                                        Order: {item.orderNumber} • Table: {item.tableName}
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-text-align_right">
+                                    <div class="slds-text-body_small">
+                                        Qty: {item.quantity}
+                                    </div>
+                                    <div class="slds-text-body_small">
+                                        Status: {item.status}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-m-top_small slds-grid slds-grid_align-spread">
+                                <lightning-button
+                                    label="Delivered"
+                                    variant="brand"
+                                    data-id={item.orderItemId}
+                                    onclick={handleDelivered}>
+                                </lightning-button>
+                                <lightning-button
+                                    label="Mark Order Complete"
+                                    variant="neutral"
+                                    data-id={item.orderId}
+                                    onclick={handleCompleteOrder}>
+                                </lightning-button>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+            </template>
+            <template if:false={queueItems}>
+                <div class="slds-text-color_weak">No ready items at the moment.</div>
+            </template>
+
+            <template if:true={message}>
+                <div class="slds-notify slds-notify_alert slds-theme_info slds-m-top_small" role="status">
+                    <span class="slds-assistive-text">Info</span>
+                    <h2>{message}</h2>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>
+

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Restaurant Management Access</label>
+    <description>Grants full access to Restaurant E-Management custom objects, tabs, and Apex classes.</description>
+
+    <!-- Object permissions -->
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <viewAllRecords>true</viewAllRecords>
+        <object>Restaurant__c</object>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <viewAllRecords>true</viewAllRecords>
+        <object>Table__c</object>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <viewAllRecords>true</viewAllRecords>
+        <object>Menu_Item__c</object>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <viewAllRecords>true</viewAllRecords>
+        <object>Order__c</object>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <viewAllRecords>true</viewAllRecords>
+        <object>Order_Item__c</object>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <viewAllRecords>true</viewAllRecords>
+        <object>Inventory_Item__c</object>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <viewAllRecords>true</viewAllRecords>
+        <object>Feedback__c</object>
+    </objectPermissions>
+
+    <!-- Apex class access -->
+    <classAccesses>
+        <apexClass>RestaurantOrderService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>MenuItemListController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TableController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ChefListController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>WaiterListController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Bill</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>RestaurantContextController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+
+    <!-- Field-level security -->
+    <fieldPermissions><editable>true</editable><field>Restaurant__c.Location__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Restaurant__c.Is_Active__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Restaurant__c.Active_Chef_Count__c</field><readable>true</readable></fieldPermissions>
+
+    <fieldPermissions><editable>true</editable><field>Order__c.Total_Amount__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Order__c.Tax_Amount__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Order__c.Tip_Amount__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Order__c.Grand_Total__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Order__c.Order_Start_Time__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Order__c.Order_End_Time__c</field><readable>true</readable></fieldPermissions>
+
+    <fieldPermissions><editable>true</editable><field>Order_Item__c.Line_Total__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Order_Item__c.Estimated_Delivery_Time__c</field><readable>true</readable></fieldPermissions>
+
+    <fieldPermissions><editable>true</editable><field>Inventory_Item__c.Menu_Item__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Inventory_Item__c.Reorder_Threshold__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Inventory_Item__c.Forecast_Days_Coverage__c</field><readable>true</readable></fieldPermissions>
+
+    <fieldPermissions><editable>true</editable><field>Feedback__c.Food_Rating__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Feedback__c.Service_Rating__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Feedback__c.Comments__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- Required custom fields: omit fieldPermissions — Salesforce blocks FLS deploy on required fields; object CRUD grants access. -->
+
+    <fieldPermissions><editable>true</editable><field>Menu_Item__c.Restaurant__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>Menu_Item__c.Is_Top_Seller__c</field><readable>true</readable></fieldPermissions>
+
+    <fieldPermissions><editable>true</editable><field>Feedback__c.Restaurant__c</field><readable>true</readable></fieldPermissions>
+
+    <!-- Tab visibility -->
+    <tabSettings>
+        <tab>Restaurant__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Table__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Menu_Item__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Order__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Inventory_Item__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Feedback__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Menu</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>TestTables</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Chef_Pending_Orders</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>WaiterPendingOrders</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Bill</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>AdminSetup</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>
+

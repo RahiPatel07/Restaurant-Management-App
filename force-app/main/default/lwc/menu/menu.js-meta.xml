@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Restaurant Menu</masterLabel>
+    <description>Customer menu and cart page for restaurant e-management.</description>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__Tab</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage,lightning__HomePage">
+            <property
+                name="restaurantId"
+                type="String"
+                label="Restaurant Id"
+                description="Restaurant Id to filter menu items."/>
+            <property
+                name="tableId"
+                type="String"
+                label="Table Id"
+                description="Table Id associated with this order."/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
+

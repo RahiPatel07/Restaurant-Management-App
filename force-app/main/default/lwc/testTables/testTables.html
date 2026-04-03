@@ -1,0 +1,114 @@
+<template>
+    <div class="slds-card">
+        <div class="slds-card__header slds-grid slds-grid_vertical-align-center slds-p-around_small">
+            <div class="slds-media__body">
+                <h2 class="slds-text-heading_medium">TestTables</h2>
+                <div class="slds-text-body_small slds-text-color_weak">Front Desk - Allocate and Update Table Status</div>
+            </div>
+        </div>
+
+        <div class="slds-card__body slds-p-horizontal_small">
+            <div class="slds-grid slds-gutters slds-m-bottom_small">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-combobox
+                        label="Restaurant"
+                        value={selectedRestaurantId}
+                        options={restaurantOptions}
+                        placeholder="Select a restaurant"
+                        onchange={handleRestaurantChange}>
+                    </lightning-combobox>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-grid_align-spread slds-m-bottom_small">
+                <div class="slds-col">
+                    <lightning-input
+                        type="number"
+                        label="Guest Count"
+                        value={guestCount}
+                        onchange={handleGuestCountChange}>
+                    </lightning-input>
+                </div>
+                <div class="slds-col slds-align-bottom">
+                    <lightning-button
+                        label="Allocate Best Table"
+                        variant="brand"
+                        onclick={handleAllocateBestTable}
+                        disabled={disableActions}>
+                    </lightning-button>
+                </div>
+            </div>
+
+            <template if:true={hasTables}>
+                <div class="slds-wrap slds-grid slds-gutters">
+                    <template for:each={tables} for:item="t">
+                        <div key={t.id} class="slds-col slds-size_1-of-4 slds-p-around_x-small">
+                            <article class="slds-card">
+                                <div class="slds-card__body slds-p-around_small">
+                                    <div class="slds-text-heading_small">{t.name}</div>
+                                    <div class="slds-text-body_small slds-m-top_xx-small">
+                                        Seats: {t.seats}
+                                    </div>
+                                    <div class="slds-text-body_small slds-m-top_xx-small">
+                                        Status: <strong>{t.status}</strong>
+                                    </div>
+
+                                    <div class="slds-m-top_small">
+                                        <template if:true={t.isAvailable}>
+                                            <lightning-button
+                                                class="slds-m-top_x-small"
+                                                label="Mark Occupied"
+                                                variant="brand"
+                                                data-id={t.id}
+                                                onclick={handleSetOccupied}>
+                                            </lightning-button>
+                                        </template>
+                                        <template if:true={t.isOccupied}>
+                                            <lightning-button
+                                                class="slds-m-top_x-small"
+                                                label="Start Cleaning"
+                                                variant="neutral"
+                                                data-id={t.id}
+                                                onclick={handleSetCleaning}>
+                                            </lightning-button>
+                                        </template>
+                                        <template if:true={t.isCleaning}>
+                                            <lightning-button
+                                                class="slds-m-top_x-small"
+                                                label="Mark Available"
+                                                variant="neutral"
+                                                data-id={t.id}
+                                                onclick={handleSetAvailable}>
+                                            </lightning-button>
+                                        </template>
+                                        <template if:true={t.isReserved}>
+                                            <lightning-button
+                                                class="slds-m-top_x-small"
+                                                label="Mark Occupied"
+                                                variant="brand"
+                                                data-id={t.id}
+                                                onclick={handleSetOccupied}>
+                                            </lightning-button>
+                                        </template>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <template if:false={hasTables}>
+                <div class="slds-text-color_weak">No tables found.</div>
+            </template>
+
+            <template if:true={message}>
+                <div class="slds-notify slds-notify_alert slds-theme_success slds-m-top_small" role="status" aria-live="polite">
+                    <span class="slds-assistive-text">Success</span>
+                    <h2>{message}</h2>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>
+

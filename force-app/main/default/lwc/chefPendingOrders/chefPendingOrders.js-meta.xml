@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Chef Pending Orders</masterLabel>
+    <description>Chef queue screen for pending and preparing items.</description>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__Tab</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage,lightning__HomePage">
+            <property
+                name="restaurantId"
+                type="String"
+                label="Restaurant Id"
+                description="Restaurant Id used to load kitchen queue."/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
+

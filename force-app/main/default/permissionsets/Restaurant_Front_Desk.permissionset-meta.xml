@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Restaurant Front Desk</label>
+    <description>Front desk access for table allocation and table status updates.</description>
+    <classAccesses><apexClass>TableController</apexClass><enabled>true</enabled></classAccesses>
+    <objectPermissions><allowCreate>false</allowCreate><allowDelete>false</allowDelete><allowEdit>true</allowEdit><allowRead>true</allowRead><modifyAllRecords>false</modifyAllRecords><object>Table__c</object><viewAllRecords>true</viewAllRecords></objectPermissions>
+    <objectPermissions><allowCreate>true</allowCreate><allowDelete>false</allowDelete><allowEdit>true</allowEdit><allowRead>true</allowRead><modifyAllRecords>false</modifyAllRecords><object>Order__c</object><viewAllRecords>true</viewAllRecords></objectPermissions>
+    <objectPermissions><allowCreate>false</allowCreate><allowDelete>false</allowDelete><allowEdit>false</allowEdit><allowRead>true</allowRead><modifyAllRecords>false</modifyAllRecords><object>Restaurant__c</object><viewAllRecords>true</viewAllRecords></objectPermissions>
+    <tabSettings><tab>TestTables</tab><visibility>Visible</visibility></tabSettings>
+    <tabSettings><tab>Table__c</tab><visibility>Visible</visibility></tabSettings>
+</PermissionSet>
+
